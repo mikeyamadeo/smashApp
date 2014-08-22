@@ -1,0 +1,24 @@
+<div class="cover"
+	 style="background-image: url( {{ imgPath + viewModel.bgImage }} )" >
+
+	<ul>
+		<li ng-repeat="ranking in rankings" >
+			
+			<div>
+				{{ ranking.char.name }}
+				<img 	height="150px" width="150px" 
+					src="{{ imgPath + ranking.char.imgPath }} " />
+			</div>
+			<div>
+				{{ ranking.user.name }}
+				<img height="150px" width="150px" src="{{ ranking.user.pictureUrl }} " />
+			</div>
+			<div>
+				Wins: {{ ranking.record[ 0 ] }}, Losses: {{ ranking.record[ 1 ] }}
+			</div>
+		
+		</li>
+	</ul>
+
+</div>
+
