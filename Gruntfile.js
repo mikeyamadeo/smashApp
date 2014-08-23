@@ -32,6 +32,7 @@ module.exports = function(grunt) {
       } 
     },
 
+    //starts a server and enables livereload
     connect: {
       options: {
         port: 9000,
@@ -49,6 +50,27 @@ module.exports = function(grunt) {
       }
     },
 
+    //copy and clean are used for the build process
+    copy: {
+      build: {
+        cwd: 'src',
+        src: [ 
+          'app/**/*.html',
+          'assets/**',
+          'app.js',
+          'index.html'
+        ],
+        dest: 'dist',
+        expand: true
+      },
+    },
+
+    clean: {
+      build: {
+        src: [ 'dist' ]
+      },
+    },
+
     cssmin: {
       add_banner: {
         options: {
@@ -64,9 +86,12 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
 
   grunt.registerTask('default', ['concat', 'connect', 'watch']);
+  grunt.registerTask('build', ['concat', 'clean', 'copy']);
 
 };
