@@ -22,8 +22,9 @@ module.exports = function(grunt) {
       scripts: {
         files: ['Gruntfile.js',
                 'src/index.html',
+                'src/styles/**',
                 'src/app/**/*.js'],
-        tasks: ['concat'],
+        tasks: ['concat', 'compass', 'cssmin'],
         options: {
           spawn: false,
           hostname: 'localhost',
@@ -58,6 +59,7 @@ module.exports = function(grunt) {
           'app/**/*.html',
           'assets/**',
           'app.js',
+          'styles.min.css',
           'index.html'
         ],
         dest: 'dist',
@@ -71,13 +73,22 @@ module.exports = function(grunt) {
       },
     },
 
+    compass: {                  // Task
+      dist: {                   // Target
+        options: {              // Target options
+          sassDir: 'src/styles/sass',
+          cssDir: 'src/styles/css'
+        }
+      }
+    },
+
     cssmin: {
       add_banner: {
         options: {
           banner: '/* vci minified css file */'
         },
         files: {
-          'www/styles.min.css': ['www/styles.css']
+          'src/styles.min.css': ['src/styles/css/main.css']
         }
       }
     }
@@ -88,10 +99,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-compass');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
 
-  grunt.registerTask('default', ['concat', 'connect', 'watch']);
+  grunt.registerTask('default', ['concat', 'connect', 'compass', 'cssmin', 'watch']);
   grunt.registerTask('build', ['concat', 'clean', 'copy']);
 
 };
