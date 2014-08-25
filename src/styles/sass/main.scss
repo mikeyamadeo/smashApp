@@ -30,12 +30,55 @@
  *
  */
 
- .testing {
-    color: white;
-    .grunt {
-        color: orange;
-        .auto-preprocessing {
-            color: red;
-        }
-    }
- }
+/*------------------------------------*\
+    #COMPASS
+\*------------------------------------*/
+@import "compass";
+
+/*------------------------------------*\
+    #UTILITIES
+\*------------------------------------*/
+@import "utilities/settings";
+@import "utilities/utilities";
+
+/*------------------------------------*\
+    #BASE
+\*------------------------------------*/
+@import "base/normalize";
+@import "base/base";
+
+/*------------------------------------*\
+    #FONTS
+\*------------------------------------*/
+// @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro);
+
+/*------------------------------------*\
+    #LAYOUT
+\*------------------------------------*/
+@import "layout/bootstrap-grid";
+
+/*------------------------------------*\
+    #COMPONENTS
+\*------------------------------------*/
+
+/*------------------------------------*\
+    #THEME
+\*------------------------------------*/
+
+
+hr {
+    display: block;
+    height: 1px;
+    margin: $general-margin 0;
+
+    border: none;
+
+    background-color: $color-2;
+}
+.rounded {
+    border-radius: 50%;
+}
+
+.bg-color {
+    background-color: $color-1;
+}

@@ -23,7 +23,7 @@ module.exports = function(grunt) {
         files: ['Gruntfile.js',
                 'src/index.html',
                 'src/styles/**',
-                'src/app/**/*.js'],
+                'src/app/**'],
         tasks: ['concat', 'compass', 'cssmin'],
         options: {
           spawn: false,
