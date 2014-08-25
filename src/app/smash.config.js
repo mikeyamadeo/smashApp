@@ -5,12 +5,12 @@ angular.module('smash.config', [])
   	[					
   	function Smashdata(	 ) {
 
-
+        var production = true;
 
     // AngularJS will instantiate a singleton by calling "new" on this function
     return {
-    	production: false,
-    	imagePath: this.production ? 'http://cdn.getvicci.com/ssb/' : 'assets/images/'
+    	production: production,
+    	imagePath: production ? 'http://cdn.getvicci.com/ssb/' : 'assets/images/'
     };
 
   }]);

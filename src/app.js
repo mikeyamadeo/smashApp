@@ -347,7 +347,7 @@ angular.module('smash.model', [])
         users : function( data ) {
 
             if ( data && data instanceof Object ) {
-                users = data.players;
+                users = data;
             }
             return users;
         },
@@ -362,7 +362,7 @@ angular.module('smash.model', [])
         matches : function( data ) {
 
             if ( data && data instanceof Object ) {
-                matches = data.matches;
+                matches = data;
             } 
             return matches;
         },
@@ -515,7 +515,6 @@ angular.module('smash.rankings', [])
   .controller('rankingsCtrl',
   	[			'$scope', 'rankingsViewModel', 'config',
   	function (   $scope,   rankingsViewModel,   config ) {
-        
   		$scope.viewModel = rankingsViewModel;
   		$scope.imgPath = config.imagePath;
     	$scope.rankings = rankingsViewModel.rankingList;
@@ -528,12 +527,12 @@ angular.module('smash.config', [])
   	[					
   	function Smashdata(	 ) {
 
-
+        var production = true;
 
     // AngularJS will instantiate a singleton by calling "new" on this function
     return {
-    	production: false,
-    	imagePath: this.production ? 'http://cdn.getvicci.com/ssb/' : 'assets/images/'
+    	production: production,
+    	imagePath: production ? 'http://cdn.getvicci.com/ssb/' : 'assets/images/'
     };
 
   }]);

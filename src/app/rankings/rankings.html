@@ -1,19 +1,26 @@
-<div class="cover"
-	 style="background-image: url( {{ imgPath + viewModel.bgImage }} )" >
-
-	<ul>
-		<li ng-repeat="ranking in rankings" >
+<div class="bg-color"
+	 style="" >
+	<!-- <hr> -->
+	<!-- background-image: url( {{ imgPath + viewModel.bgImage }} ); -->
+	<ul class="container-fluid">
+		<li class="row" ng-repeat="ranking in rankings" >
 			
-			<div>
+			<div class="col-xs-3
+            			col-sm-3
+            			col-md-3">
 				{{ ranking.char.name }}
-				<img 	height="150px" width="150px" 
-					src="{{ imgPath + ranking.char.imgPath }} " />
+				<img class="rounded" height="150px" width="150px" 
+					ng-src="{{ imgPath + ranking.char.imgPath }} " />
 			</div>
-			<div>
+			<div class="col-xs-3
+            			col-sm-3
+            			col-md-3">
 				{{ ranking.user.name }}
-				<img height="150px" width="150px" src="{{ ranking.user.pictureUrl }} " />
+				<img class="rounded" height="150px" width="150px" ng-src="{{ ranking.user.pictureUrl }} " />
 			</div>
-			<div>
+			<div class="col-xs-3
+            			col-sm-3
+            			col-md-3">
 				Wins: {{ ranking.record[ 0 ] }}, Losses: {{ ranking.record[ 1 ] }}
 			</div>
 		

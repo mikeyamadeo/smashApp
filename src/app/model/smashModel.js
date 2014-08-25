@@ -79,7 +79,7 @@ angular.module('smash.model', [])
         users : function( data ) {
 
             if ( data && data instanceof Object ) {
-                users = data.players;
+                users = data;
             }
             return users;
         },
@@ -94,7 +94,7 @@ angular.module('smash.model', [])
         matches : function( data ) {
 
             if ( data && data instanceof Object ) {
-                matches = data.matches;
+                matches = data;
             } 
             return matches;
         },
