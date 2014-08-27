@@ -1,0 +1,18 @@
+///*------------------------------------*\
+//    #GLOBALSETTINGS
+//\*------------------------------------*/
+
+ /* Typography */
+ $base-font-size: 16px;
+ $font-1: verdana;
+
+ $baseline: $base-font-size * 1.5;
+
+ /* Positioning */
+ $margin-multiplier: 2;
+
+ $general-margin: $baseline * $margin-multiplier;
+
+ ul {
+    margin: 0;
+ }

@@ -17,6 +17,11 @@
     "tests"
   ],
   "dependencies": {
-    "inuit-starter-kit": "~0.2.8"
+    "inuit-starter-kit": "~0.2.8",
+    "inuit-box": "~0.4.3",
+    "inuit-clearfix": "~0.2.1",
+    "inuit-layout": "~0.3.2",
+    "inuit-reset": "~0.1.1",
+    "inuit-widths": "~0.3.2"
   }
 }

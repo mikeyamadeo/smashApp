@@ -1,3 +1,7 @@
+/*------------------------------------*\
+    #SMASHAPP
+\*------------------------------------*/
+
 /**
  * CONTENTS
  *
@@ -30,40 +34,107 @@
  *
  */
 
-/*------------------------------------*\
-    #COMPASS
-\*------------------------------------*/
-@import "compass";
 
-/*------------------------------------*\
-    #UTILITIES
-\*------------------------------------*/
-@import "utilities/settings";
-@import "utilities/utilities";
 
-/*------------------------------------*\
-    #BASE
-\*------------------------------------*/
-@import "base/normalize";
-@import "base/base";
 
-/*------------------------------------*\
-    #FONTS
-\*------------------------------------*/
-// @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro);
 
-/*------------------------------------*\
-    #LAYOUT
-\*------------------------------------*/
-@import "layout/bootstrap-grid";
+/**
+ * #SETTINGS
+ */
+@import "bower_components/inuit-defaults/settings.defaults";
+@import "settings.colors";
+@import "settings.global";
 
-/*------------------------------------*\
-    #COMPONENTS
-\*------------------------------------*/
 
-/*------------------------------------*\
-    #THEME
-\*------------------------------------*/
+
+
+/**
+ * #TOOLS
+ */
+@import "bower_components/inuit-functions/tools.functions";
+@import "bower_components/inuit-mixins/tools.mixins";
+
+
+
+
+/**
+ * #GENERIC
+ */
+@import "bower_components/inuit-normalize/generic.normalize";
+@import "bower_components/inuit-reset/generic.reset";
+@import "bower_components/inuit-box-sizing/generic.box-sizing";
+
+
+
+
+
+/**
+ * #BASE
+ */
+@import "bower_components/inuit-page/base.page";
+@import "bower_components/inuit-images/base.images";
+@import "base.type";
+@import "base.grid-bootstrap";
+
+
+
+
+
+/**
+ * #OBJECTS
+ */
+$inuit-enable-box--flush:   true;
+@import "bower_components/inuit-box/objects.box";
+
+/**
+ * Quick, inline extension of the inuitcss box object.
+ */
+.box--sized {
+    width:  150px;
+    height: 150px;
+}
+
+/**
+ * Remember:
+ * http://css-tricks.com/fighting-the-space-between-inline-block-elements/
+ */
+$inuit-enable-layout--flush:    true;
+$inuit-enable-layout--middle:   true;
+$inuit-enable-layout--bottom:   true;
+$inuit-enable-layout--right:    true;
+$inuit-enable-layout--center:   true;
+$inuit-enable-layout--auto:     true;
+@import "bower_components/inuit-layout/objects.layout";
+
+//assumes element has declared width
+.center {
+    margin: 0 auto;
+}
+img.center {
+    margin: 0 auto;
+    display: block;
+}
+
+
+
+
+/**
+ * #COMPONENTS
+ */
+$flip-on-hover: false;
+@import "components.flipper";
+
+
+
+
+
+/**
+ * #TRUMPS
+ */
+@import "bower_components/inuit-clearfix/trumps.clearfix";
+@import "bower_components/inuit-widths/trumps.widths";
+
+
 
 
 hr {
@@ -73,12 +144,74 @@ hr {
 
     border: none;
 
-    background-color: $color-2;
+    background-color: $color-blue;
+}
+
+.align-center {
+    text-align: center;
 }
 .rounded {
     border-radius: 50%;
 }
 
-.bg-color {
-    background-color: $color-1;
+.border {
+    border: solid 3px $color-white;
 }
+
+.entity {
+    width: 100px;
+    height: 100px;
+    // text-align: center;
+}
+.image-entity {
+     background-repeat: no-repeat;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.entity--lg {
+    width: 150px;
+    height: 150px;
+}
+
+.entity--sm {
+    width: 50px;
+    height: 50px;
+}
+.full-height {
+    min-height: 50px;
+}
+.center-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    text-align: center;
+}
+.center-absolute {
+    line-height: 150px;
+  //   width: 100%;
+  //   height: 50%;
+    font-size: 3em;
+  //   display:inline-block;
+  //   vertical-align: middle;
+  // overflow: auto;
+  // margin: auto;
+  // position: absolute;
+  // top: 0; left: 0; bottom: 0; right: 0;
+}
+.l-center-absolute { 
+      position: absolute;
+      overflow: auto;
+      margin: auto;
+      top: 0; left: 0; bottom: 0; right: 0;
+}
+.bg-color {
+    background-color: $color-blue;
+}
+
+
+
+
