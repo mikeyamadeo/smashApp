@@ -1,0 +1,42 @@
+<div class="flip-container
+            box
+            box--sized
+            box--flush
+            center
+            align-center"
+     ng-init="flipped = false"
+     ng-class="{ 'is-flipped' : flipped }"
+     ng-click="flipped = !is-flipped">
+
+    <div class="flip-container__flipper
+                rounded
+                border
+                box
+                box--sized
+                box--flush">
+
+        <div class="flip-container__front">
+            <!-- front content -->
+             <b class="">
+                {{  
+                      ranking.record[ 0 ] / 
+                    ( ranking.record[ 0 ] + 
+                      ranking.record[ 1 ] ) *
+                      100
+                }} %
+            </b>
+        </div>
+        
+        <div class="flip-container__back">
+            <!-- back content -->
+            <b class="">
+                {{ ranking.record[ 0 ] }} 
+            </b>
+            <b class="">
+                {{ ranking.record[ 1 ] }}
+            </b>
+        </div>
+
+    </div>
+
+</div>

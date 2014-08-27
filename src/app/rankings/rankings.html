@@ -1,30 +1,23 @@
-<div class="bg-color"
+<div class=""
 	 style="" >
-	<!-- <hr> -->
-	<!-- background-image: url( {{ imgPath + viewModel.bgImage }} ); -->
-	<ul class="container-fluid">
-		<li class="row" ng-repeat="ranking in rankings" >
+
+	<ul class="image-entity" style="background-image: url( {{ imgPath + viewModel.bgImage }} );">
+
+		<li class="layout bg-color" ng-repeat="ranking in rankings" >
 			
-			<div class="col-xs-3
-            			col-sm-3
-            			col-md-3">
-				{{ ranking.char.name }}
-				<img class="rounded" height="150px" width="150px" 
+            <!-- NO SPACES can exist between layout__items-->
+			<div class="layout__item 1/3">
+				<img class="rounded center" height="150px" width="150px" 
 					ng-src="{{ imgPath + ranking.char.imgPath }} " />
-			</div>
-			<div class="col-xs-3
-            			col-sm-3
-            			col-md-3">
-				{{ ranking.user.name }}
-				<img class="rounded" height="150px" width="150px" ng-src="{{ ranking.user.pictureUrl }} " />
-			</div>
-			<div class="col-xs-3
-            			col-sm-3
-            			col-md-3">
-				Wins: {{ ranking.record[ 0 ] }}, Losses: {{ ranking.record[ 1 ] }}
+			</div><!----><div class="layout__item 1/3">
+                <img class="rounded center" height="150px" width="150px" ng-src="{{ ranking.user.pictureUrl }}" />
+            </div><!--
+            --><div class="layout__item 1/3"
+                    ng-include="'app/rankings/stats-flipper.html'">
 			</div>
 		
 		</li>
+
 	</ul>
 
 </div>
