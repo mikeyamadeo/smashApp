@@ -27,7 +27,10 @@ angular.module('smash.viewPrep', [])
          return {
                 user    : {},
                 record  : {
-                    total : []
+                    total : { 
+                        wins: null, 
+                        losses: null
+                    }
                 },
                 chars   : [],
                 matches : []
@@ -53,19 +56,50 @@ angular.module('smash.viewPrep', [])
             return charSet;
         }
             /**
-             * @desc ForEach Array function used to Adds the character associated with 
-             *     user id found in this.id. Used by "makeCharSet"
+             * @desc ForEach Array function used to Add the character associated with 
+             *     user id found in this.id. Used by "makeCharSet". Char key is
+             *     given a 'record' (wins/losses) value ( [ wins,losses ] ) which is
+             *     either initialized or added to.
              * @param element value,  index, and array being traversed. Passed from
              *     ForEach Array function
              */
             function addCharToSetFromMatch( el ){
-                var char = (this.id === el.winner) ? el.wChar : el.lChar;
-                char = char.toLowerCase();
+                var char = "";
 
-                if ( !this[char] ) {
-                    this[char] = true;
+                if ( isWinner( el, this.id ) ) {
+
+                    char = el.wChar.toLowerCase();
+                    this[ char ] = this[ char ] ? 
+                                   combineRecords.call( this[ char ] , [ 1, 0 ] ) :
+                                   [ 1, 0 ];
+                } else {
+
+                    char = el.lChar.toLowerCase();
+                    this[ char ] = this[ char ] ? 
+                                   combineRecords.call( this[ char ] , [ 0, 1 ] ) :
+                                   [ 0, 1 ];
                 }
             }
+
+                /**
+                 * @desc Adds two records together. A record takes the form of a two-
+                 *    dimensional array. index 0 representing wins and index 1 repre-
+                 *    senting losses. [ wins, losses ]. Currently set up to be "Called"
+                 *    and passed a context to add to.
+                 * @param {Array} arg1 Record to combine with.
+                 * @return {Array} the result of the combined records.
+                 */
+                function combineRecords( record ) {
+
+                    for (   var i = 0, 
+                                l = this.length; 
+                            i < l; i++) {
+
+                        this[ i ] += record[ i ]; 
+                    }
+
+                    return this;
+                }
 
         /**
          * @desc Abstraction for Map Array function in order to have user id available
