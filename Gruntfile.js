@@ -12,6 +12,7 @@ module.exports = function(grunt) {
           'src/common/angular/angular.min.js',
           'src/common/angular-ui-router/release/angular-ui-router.min.js',
           'src/common/polyfill/Array.prototype.find.js',
+          'src/common/fastclick.js',
           'src/app/**/*.js' // All the js in app folder
         ],
         dest: 'src/app.js',
@@ -24,7 +25,7 @@ module.exports = function(grunt) {
                 'src/index.html',
                 'src/styles/**',
                 'src/app/**'],
-        tasks: ['concat', 'compass', 'cssmin'],
+        tasks: ['concat', 'compass', 'cssmin', 'clean:phonegap', 'copy:phonegap'],
         options: {
           spawn: false,
           hostname: 'localhost',
@@ -65,12 +66,27 @@ module.exports = function(grunt) {
         dest: 'dist',
         expand: true
       },
+      phonegap: {
+        cwd: 'src',
+        src: [ 
+          'app/**/*.html',
+          'assets/**',
+          'app.js',
+          'styles.min.css',
+          'index.html'
+        ],
+        dest: 'phonegap/www',
+        expand: true
+      }
     },
 
     clean: {
       build: {
         src: [ 'dist' ]
       },
+      phonegap: {
+        src: [ 'phonegap/www']
+      }
     },
 
     compass: {                  // Task
@@ -104,7 +120,14 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
 
 
-  grunt.registerTask('default', ['concat', 'connect', 'compass', 'cssmin', 'watch']);
-  grunt.registerTask('build', ['concat', 'clean', 'copy']);
+  grunt.registerTask('default', [
+    'concat', 
+    'connect', 
+    'compass', 
+    'cssmin', 
+    'clean:phonegap', 
+    'copy:phonegap', 
+    'watch']);
+  grunt.registerTask('build', ['concat', 'clean:build', 'copy:build']);
 
 };
