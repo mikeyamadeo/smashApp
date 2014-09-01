@@ -3,11 +3,148 @@
 angular.module('smash.viewPrep', [])
 
   .factory('smashViewPrep',
-    [           'rankingsViewPrep',
-    function (   rankingsViewPrep ) {
+    [           'rankingsViewPrep', 'profileViewPrep',
+    function (   rankingsViewPrep,   profileViewPrep ) {
 
         return {
-           rankings : rankingsViewPrep
+            rankings : rankingsViewPrep,
+            profile  : profileViewPrep.get
+        };
+
+    }])
+
+  .factory('profileViewPrep',
+    [         'smashData',
+    function ( smashData ) {
+
+        /**
+         * @desc Constructor to be called with "new" operator. Represents basic 
+         *     skeleton of what this factory produces to be used by the view. 
+         * @return {Object}.
+         */
+        function ProfileViewModel() {
+
+         return {
+                user    : {},
+                record  : {
+                    total : []
+                },
+                chars   : [],
+                matches : []
+            }
+        }
+
+        /**
+         * @desc Returns a set of characters from an array of matches based on user
+         *      id. Abstracts away the JS ForEach Array function.
+         * @param {Array.<match>} arg1 List of user's matches
+         * @param {string} arg2 Id used to know which character in the match belongs
+         *     to the user.
+         * @return {Object} set of characters user has had matches with.
+         */
+        function makeCharSet( matches, userId ){
+            var charSet = {
+                id : userId
+            }
+
+            matches.forEach( addCharToSetFromMatch, charSet );
+            delete charSet.id;
+
+            return charSet;
+        }
+            /**
+             * @desc ForEach Array function used to Adds the character associated with 
+             *     user id found in this.id. Used by "makeCharSet"
+             * @param element value,  index, and array being traversed. Passed from
+             *     ForEach Array function
+             */
+            function addCharToSetFromMatch( el ){
+                var char = (this.id === el.winner) ? el.wChar : el.lChar;
+                char = char.toLowerCase();
+
+                if ( !this[char] ) {
+                    this[char] = true;
+                }
+            }
+
+        /**
+         * @desc Abstraction for Map Array function in order to have user id available
+         *      as 'this'.
+         * @param {Array.<match>} arg1 List of matches user played in
+         * @param {string} arg2 user Id
+         * @return {Array} List of user's matches curated for profile view.
+         */
+        function makeUserMatchesModel( matches, userId ){
+
+            return matches.map( convertMatch, { id : userId } );
+
+        }
+            /**
+            * @desc Used by Map Array function to extract data from match and make one
+            *      more friendly for user profile match list view.
+            * @param {Array.<match>} arg1 List of matches user played in
+            * @return {Object} New User match model object.
+            */
+            function convertMatch( el ) {
+
+                if ( isWinner(el, this.id) ) {
+
+                    return new UserMatchModel( smashData.char(el.wChar), 
+                                               smashData.user(el.loser), 
+                                               smashData.char(el.lChar), 
+                                               true, 
+                                               el.wStocksLeft);
+                } else {
+
+                    return new UserMatchModel( smashData.char(el.lChar), 
+                                               smashData.user(el.winner), 
+                                               smashData.char(el.wChar), 
+                                               false, 
+                                               el.wStocksLeft);
+                }
+
+            }
+
+            /**
+            * @desc Object used by user profile view in ng-repeat "match in matches"
+            * @return {Object} User match model object.
+            */
+            function UserMatchModel (char, opp, oppChar, win, stocks) {
+                return {
+                    char         : char,
+                    opponent     : opp,
+                    opponentChar : oppChar,
+                    win          : win,
+                    stocksLeft   : stocks
+                }
+            }
+
+        /**
+         * @desc Simple function used as abstraction.
+         * @param {Object} arg1 Match Object.
+         * @param {string} arg2 id (phone number) of user.
+         * @return {Boolean} true if id matches winner id, false if not.
+        */            
+        function isWinner( match, id ) {
+            return match.winner === id;
+        }
+        return {
+            get : function( user, matches ) {
+                var profileViewModel = new ProfileViewModel();
+                profileViewModel.user = user;
+                // profileViewModel.matches = matches;
+
+                var charSet = makeCharSet( matches, user.phoneNumber );
+
+                for ( key in charSet ) {
+                    profileViewModel.chars.push(smashData.char(  key  ));
+                }
+
+
+                profileViewModel.matches = makeUserMatchesModel( matches, user.phoneNumber );
+                // console.log(profileViewModel);
+                return profileViewModel;
+            }
         };
 
     }])
