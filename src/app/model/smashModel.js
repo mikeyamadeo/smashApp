@@ -7,8 +7,8 @@ angular.module('smash.model', [])
 
     // AngularJS will instantiate a singleton by calling "new" on this function
     var prod = config.production,
-        getUsersUrl     =    prod ? 'http://localhost:3000/users'    : 'assets/json/players.json',
-        getMatchesUrl   =    prod ? 'http://localhost:3000/matches'  : 'assets/json/records.json',
+        getUsersUrl     =    prod ? 'http://localhost:4000/users'    : 'assets/json/players.json',
+        getMatchesUrl   =    prod ? 'http://localhost:4000/matches'  : 'assets/json/records.json',
         getCharsUrl     =    prod ? 'assets/json/characters.json'    : 'assets/json/characters.json';
 
     var HttpObject = function( method, cache, url, postData ) {
@@ -75,7 +75,7 @@ angular.module('smash.model', [])
             chars   = null;
 
     return {
-
+        //acts as setter and getter
         users : function( data ) {
 
             if ( data && data instanceof Object ) {
@@ -83,14 +83,25 @@ angular.module('smash.model', [])
             }
             return users;
         },
-
+        //acts as setter and getter
         user : function( id ) {
+
             var user = users.find( function( element ) {
                 return element.phoneNumber === id;
             });
             return user;
         },
 
+        userMatches : function( id, matches ) {
+
+            function matchesId( el ) {
+                return id === el.winner || id === el.loser;
+            }
+
+            return matches.filter( matchesId );
+        },
+
+        //acts as setter and getter
         matches : function( data ) {
 
             if ( data && data instanceof Object ) {
@@ -98,7 +109,7 @@ angular.module('smash.model', [])
             } 
             return matches;
         },
-
+        //acts as setter and getter
         chars : function( data ) {
 
             if ( data && data instanceof Object ) {
@@ -108,6 +119,7 @@ angular.module('smash.model', [])
         },
 
         char : function( id ) {
+            id = id.toLowerCase();
             
             return chars[ id ];
         }
