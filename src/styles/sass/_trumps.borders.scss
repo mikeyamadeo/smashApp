@@ -1,0 +1,26 @@
+/*------------------------------------*\
+    #BORDERS
+\*------------------------------------*/
+
+/**
+ * Border helper classes. Used for quick styling
+ *
+ * `.(b)(t|r|b|l|h|v)(-|+|0) {}` = border top/right/bottom/left/horizontal/vertical less/more/none
+ */
+
+// Predefine the variables below in order to alter and enable specific features.
+$default-border-size:                   3px !default;
+
+$enable-borders:                        false !default;
+$enable-borders--tiny:                  false !default;
+$enable-borders--small:                 false !default;
+$enable-borders--large:                 false !default;
+$enable-borders--huge:                  false !default;
+$enable-borders--none:                  false !default;
+
+// $enable-borders--negative:        false !default;
+// $enable-borders--negative-tiny:   false !default;
+// $enable-borders--negative-small:  false !default;
+// $enable-borders--negative-large:  false !default;
+// $enable-borders--negativborders   false !default;
+
