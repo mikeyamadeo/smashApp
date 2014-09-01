@@ -39,7 +39,7 @@
 
 
 /**
- * #SETTINGS
+ * #SETTINGS - Global variables, site-wide settings, config switches, etc.
  */
 @import "bower_components/inuit-defaults/settings.defaults";
 @import "settings.colors";
@@ -49,16 +49,23 @@
 
 
 /**
- * #TOOLS
+ * #TOOLS - Site-wide mixins and functions.
  */
 @import "bower_components/inuit-functions/tools.functions";
 @import "bower_components/inuit-mixins/tools.mixins";
-
+@mixin background-image-cover {
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-background-size: cover;
+       -moz-background-size: cover;
+         -o-background-size: cover;
+            background-size: cover;
+}
 
 
 
 /**
- * #GENERIC
+ * #GENERIC - Low-specificity, far-reaching rulesets (e.g. resets).
  */
 @import "bower_components/inuit-normalize/generic.normalize";
 @import "bower_components/inuit-reset/generic.reset";
@@ -69,27 +76,40 @@
 
 
 /**
- * #BASE
+ * #BASE - Unclassed HTML elements (e.g. a {}, blockquote {}, address {}).
  */
 @import "bower_components/inuit-page/base.page";
 @import "bower_components/inuit-images/base.images";
+@import "bower_components/inuit-headings/base.headings";
 @import "base.type";
-@import "base.grid-bootstrap";
 
 
 
 
 
 /**
- * #OBJECTS
+ * #OBJECTS - Objects, abstractions, and design patterns (e.g. .media {}).
  */
 $inuit-enable-box--flush:   true;
+$inuit-enable-box--tiny:    true;
 @import "bower_components/inuit-box/objects.box";
 
 /**
- * Quick, inline extension of the inuitcss box object.
+ * Quick, inline extensions of the inuitcss box object.
  */
+.box--sized--small {
+    width:  50px;
+    height: 50px;
+}
 .box--sized {
+    width:  100px;
+    height: 100px;
+}
+.box--sized--large {
+    width:  125px;
+    height: 125px;
+}
+.box--sized--huge {
     width:  150px;
     height: 150px;
 }
@@ -98,6 +118,7 @@ $inuit-enable-box--flush:   true;
  * Remember:
  * http://css-tricks.com/fighting-the-space-between-inline-block-elements/
  */
+$inuit-enable-layout--rev:      true;
 $inuit-enable-layout--flush:    true;
 $inuit-enable-layout--middle:   true;
 $inuit-enable-layout--bottom:   true;
@@ -106,110 +127,40 @@ $inuit-enable-layout--center:   true;
 $inuit-enable-layout--auto:     true;
 @import "bower_components/inuit-layout/objects.layout";
 
-//assumes element has declared width
-.center {
+.app-container {
+    max-width: 400px;
     margin: 0 auto;
+    padding-top: 20px;
 }
-img.center {
-    margin: 0 auto;
-    display: block;
-}
-
-
 
 
 /**
- * #COMPONENTS
+ * #COMPONENTS - Discrete, complete chunks of UI (e.g. .carousel {}).
  */
 $flip-on-hover: false;
 @import "components.flipper";
+@import "components.list-items";
 
 
 
 
 
 /**
- * #TRUMPS
+ * #TRUMPS - High-specificity, very explicit selectors. Overrides and helper classes.
  */
 @import "bower_components/inuit-clearfix/trumps.clearfix";
 @import "bower_components/inuit-widths/trumps.widths";
+@import "trumps.centering";
 
 
 
 
-hr {
-    display: block;
-    height: 1px;
-    margin: $general-margin 0;
-
-    border: none;
-
-    background-color: $color-blue;
-}
 
 .align-center {
     text-align: center;
 }
 .rounded {
     border-radius: 50%;
-}
-
-.border {
-    border: solid 3px $color-white;
-}
-
-.entity {
-    width: 100px;
-    height: 100px;
-    // text-align: center;
-}
-.image-entity {
-     background-repeat: no-repeat;
-    background-position: center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-.entity--lg {
-    width: 150px;
-    height: 150px;
-}
-
-.entity--sm {
-    width: 50px;
-    height: 50px;
-}
-.full-height {
-    min-height: 50px;
-}
-.center-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    text-align: center;
-}
-.center-absolute {
-    line-height: 150px;
-  //   width: 100%;
-  //   height: 50%;
-    font-size: 3em;
-  //   display:inline-block;
-  //   vertical-align: middle;
-  // overflow: auto;
-  // margin: auto;
-  // position: absolute;
-  // top: 0; left: 0; bottom: 0; right: 0;
-}
-.l-center-absolute { 
-      position: absolute;
-      overflow: auto;
-      margin: auto;
-      top: 0; left: 0; bottom: 0; right: 0;
-}
-.bg-color {
-    background-color: $color-blue;
 }
 
 
