@@ -1,0 +1,99 @@
+[
+		{
+			"datePlayed": "1400906932428",
+			"winner": "1234567890",
+			"wStocksLeft": 2,
+			"wChar": "Fox",
+			"loser": "6236284166",
+			"lChar": "Fox"
+		},
+		{
+			"datePlayed": "1400906932428",
+			"winner": "1234567890",
+			"wStocksLeft": 1,
+			"wChar": "Fox",
+			"loser": "6236284166",
+			"lChar": "Luigi"
+		},
+		{
+			"datePlayed": "1400906932428",
+			"winner": "1234567890",
+			"wStocksLeft": 3,
+			"wChar": "Pikachu",
+			"loser": "6236284166",
+			"lChar": "Mario"
+		},
+		{
+			"datePlayed": "1400906932428",
+			"winner": "0987654321",
+			"wStocksLeft": 3,
+			"wChar": "Pikachu",
+			"loser": "1234567890",
+			"lChar": "Ness"
+		},
+		{
+			"datePlayed": "1400906932428",
+			"loser": "1234567890",
+			"wStocksLeft": 3,
+			"lChar": "Pikachu",
+			"winner": "0987654321",
+			"wChar": "Mario"
+		},
+		{
+			"datePlayed": "1400906932428",
+			"winner": "6236284166",
+			"wStocksLeft": 2,
+			"wChar": "Jigglypuff",
+			"loser": "0987654321",
+			"lChar": "Samus"
+		},
+		{
+			"datePlayed": "1400906932428",
+			"loser": "0987654321",
+			"wStocksLeft": 2,
+			"lChar": "JigglyPuff",
+			"winner": "6236284166",
+			"wChar": "Kirby"
+		},
+		{
+			"datePlayed": "1400906932428",
+			"winner": "0987654321",
+			"wStocksLeft": 4,
+			"wChar": "Jigglypuff",
+			"loser": "6236284166",
+			"lChar": "Yoshi"
+		},
+		{
+			"datePlayed": "1400909932428",
+			"winner": "0987654321",
+			"wStocksLeft": 1,
+			"wChar": "Jigglypuff",
+			"loser": "6236284166",
+			"lChar": "Yoshi"
+		},
+		{
+			"datePlayed": "1400907932428",
+			"winner": "0987654321",
+			"wStocksLeft": 3,
+			"wChar": "Jigglypuff",
+			"loser": "6236284166",
+			"lChar": "Yoshi"
+		},
+		{
+			"datePlayed": "1400908932428",
+			"winner": "0987654321",
+			"wStocksLeft": 2,
+			"wChar": "Jigglypuff",
+			"loser": "6236284166",
+			"lChar": "Yoshi"
+		}
+		,
+		{
+			"datePlayed": "1400908932428",
+			"winner": "0987654321",
+			"wStocksLeft": 2,
+			"wChar": "dk",
+			"loser": "6236284166",
+			"lChar": "Link"
+		}
+	]
