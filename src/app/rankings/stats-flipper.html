@@ -2,39 +2,43 @@
             box
             box--sized
             box--flush
-            center
-            align-center"
+            c-h"
+
      ng-init="flipped = false"
      ng-class="{ 'is-flipped' : flipped }"
      ng-click="flipped = !is-flipped">
 
     <div class="flip-container__flipper
                 rounded
-                border
+                list__token
                 box
                 box--sized
-                box--flush">
+                box--flush
+                ">
 
-        <div class="flip-container__front">
+        <div class="flip-container__front c-container">
             <!-- front content -->
-             <b class="">
+            <div class="c-container__content text-size*2">
                 {{  
                       ranking.record[ 0 ] / 
                     ( ranking.record[ 0 ] + 
                       ranking.record[ 1 ] ) *
                       100
+                    | number:0
                 }} %
-            </b>
+            </div>
         </div>
         
-        <div class="flip-container__back">
+        <div class="flip-container__back c-container">
             <!-- back content -->
-            <b class="">
-                {{ ranking.record[ 0 ] }} 
-            </b>
-            <b class="">
-                {{ ranking.record[ 1 ] }}
-            </b>
+            <div class="c-container__content">
+                <p class="text-size*2">
+                    {{ ranking.record[ 0 ] }} 
+                </p>
+                <p class="text-size*2">
+                    {{ ranking.record[ 1 ] }}
+                </p>
+            </div>
         </div>
 
     </div>
