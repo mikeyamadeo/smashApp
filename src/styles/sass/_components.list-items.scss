@@ -1,0 +1,36 @@
+/*------------------------------------*\
+    #LIST-ITEMS
+\*------------------------------------*/
+
+/**
+ * Styling for the rankings list.
+ */
+
+.list {
+    @include background-image-cover;
+    list-style: none;
+}
+//.list ups the specifity to override
+.list .list__item:nth-child(1) {
+    padding: 30px 0;
+    border-bottom: solid 6px $color-blue-light;
+    // background-color: rgba( white, .7);
+    background-color: $color-blue;
+
+}
+.list__item:nth-child(odd) {
+    background-color: $color-blue-light;
+}
+.list__item:nth-child(even) {
+    background-color: $color-blue-dark;
+}
+.list__token {
+    color: white;
+    border-top:    solid 3px white;
+    border-bottom: solid 3px white;
+}
+.list__item:nth-child(even) .list__token {
+    color: white;
+    border-top:    solid 3px white;
+    border-bottom: solid 3px white;
+}
