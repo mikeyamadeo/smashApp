@@ -2,6 +2,7 @@ node_modules
 dist
 .sass-cache
 src/styles/sass/bower_components
+phonegap/www
 
 # Compiled source #
 ###################
