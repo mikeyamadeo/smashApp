@@ -1,5 +1,4 @@
-{
-	"matches" :[
+[
 		{
 			"datePlayed": "1400906932428",
 			"winner": "1234567890",
@@ -18,11 +17,27 @@
 		},
 		{
 			"datePlayed": "1400906932428",
-			"winner": "6236284166",
+			"winner": "1234567890",
 			"wStocksLeft": 3,
-			"wChar": "Mario",
+			"wChar": "Pikachu",
+			"loser": "6236284166",
+			"lChar": "Mario"
+		},
+		{
+			"datePlayed": "1400906932428",
+			"winner": "0987654321",
+			"wStocksLeft": 3,
+			"wChar": "Pikachu",
 			"loser": "1234567890",
-			"lChar": "Pikachu"
+			"lChar": "Ness"
+		},
+		{
+			"datePlayed": "1400906932428",
+			"loser": "1234567890",
+			"wStocksLeft": 3,
+			"lChar": "Pikachu",
+			"winner": "0987654321",
+			"wChar": "Mario"
 		},
 		{
 			"datePlayed": "1400906932428",
@@ -34,11 +49,11 @@
 		},
 		{
 			"datePlayed": "1400906932428",
-			"winner": "0987654321",
+			"loser": "0987654321",
 			"wStocksLeft": 2,
-			"wChar": "JigglyPuff",
-			"loser": "6236284166",
-			"lChar": "Kirby"
+			"lChar": "JigglyPuff",
+			"winner": "6236284166",
+			"wChar": "Kirby"
 		},
 		{
 			"datePlayed": "1400906932428",
@@ -82,4 +97,3 @@
 			"lChar": "Link"
 		}
 	]
-}

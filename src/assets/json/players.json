@@ -1,19 +1,17 @@
-{	
-	"players": [
+ [
         {
-			"name": "Testy McTester",
+			"name": "Sean Huntington",
 			"phoneNumber": "1234567890",
-			"pictureUrl": "http://img.gmw.cn/images/attachement/jpg/site2/20120927/eca86ba0526e11cdfd4830.jpg"
+			"pictureUrl": "https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xaf1/t31.0-8/474365_10201189515809797_918098666_o.jpg"
 		},
 		{
-			"name": "Yo Mama",
+			"name": "Joey Cozza",
 			"phoneNumber": "6236284166",
-			"pictureUrl": "http://cdn2-b.examiner.com/sites/default/files/styles/image_content_width/hash/47/7b/1357772393_2651_CrazyFaceHarrisonKeelyStock.jpg?itok=PL2Vw0nS"
+			"pictureUrl": "https://fbcdn-sphotos-c-a.akamaihd.net/hphotos-ak-xpa1/t1.0-9/156293_144915145560618_2125108_n.jpg"
 		},
 		{
-			"name": "Da Best",
+			"name": "Mikey Murphy",
 			"phoneNumber": "0987654321",
-			"pictureUrl": "http://www.newbornbabyzone.com/wp-content/uploads/2010/08/wacky-baby-names.jpg"
+			"pictureUrl": "https://scontent-a-ord.xx.fbcdn.net/hphotos-xfp1/t31.0-8/10338420_10203116177119060_4041973670845298168_o.jpg"
 		}
-	]
-}
+]
