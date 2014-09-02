@@ -1,0 +1,48 @@
+<!-- User match history -->
+<section>
+    <ol class="list">
+        <li class="layout--flush layout--middle list__item pt- pb-"
+            ng-class="{ 'list__item--highlight' : !match.win }"
+            ng-repeat="match in viewModel.matches">
+
+
+
+
+            <!-- Character used by user in match -->
+            <div class="layout__item 4/12 layout--flush layout--middle align-center">
+                <img class="rounded box--sized"
+                     lazy-load-src="{{ imgPath + match.char.imgPath }}"
+                     ng-src="assets/images/placeholder.png" />
+            </div><!-- 
+
+
+        
+
+            Stocks Left (dots)
+         --><div class="layout__item 1/12 ">
+                <div class="dot  mt-- mb-- c-h"
+                    ng-repeat="stock in numOfStocks(match.stocksLeft) track by $index">
+                    <!-- track by $index is to avoid Angulars "Duplicate Key in Repeater" error -->
+                </div><!--
+         --></div><!--
+
+
+
+
+            Opponent Info
+         --><div class="layout__item 7/12 layout--flush layout--middle align-center">
+
+                <img class="rounded  box--sized -mr"
+                     lazy-load-src="{{ imgPath + match.opponentChar.imgPath }}"
+                     ng-src="assets/images/placeholder.png" /><!--
+
+             --><a class=""
+                    ng-href="/#/profile/{{ match.opponent.phoneNumber }}">
+                    <img class="rounded box--sized"
+                         lazy-load-src="{{ match.opponent.pictureUrl  }}"
+                         ng-src="assets/images/placeholder.png" />
+                </a>
+            </div>
+        </li>
+    </ol>
+</section>
