@@ -26,12 +26,7 @@ angular.module('smash.viewPrep', [])
 
          return {
                 user    : {},
-                record  : {
-                    total : { 
-                        wins: null, 
-                        losses: null
-                    }
-                },
+                record  : [0, 0],
                 chars   : [],
                 matches : []
             }
@@ -162,6 +157,10 @@ angular.module('smash.viewPrep', [])
         function isWinner( match, id ) {
             return match.winner === id;
         }
+
+        function calcRecord( el ) {
+            combineRecords.call( this, el.record );
+        }
         return {
             get : function( user, matches ) {
                 var profileViewModel = new ProfileViewModel();
@@ -171,10 +170,15 @@ angular.module('smash.viewPrep', [])
                 var charSet = makeCharSet( matches, user.phoneNumber );
 
                 for ( key in charSet ) {
-                    profileViewModel.chars.push(smashData.char(  key  ));
+                    //get raw char data
+                    var char = smashData.char( key );
+                    //assign record property from char set
+                    char.record = charSet[ key ];
+
+                    profileViewModel.chars.push( char );
                 }
 
-
+                profileViewModel.chars.forEach( calcRecord, profileViewModel.record);
                 profileViewModel.matches = makeUserMatchesModel( matches, user.phoneNumber );
                 // console.log(profileViewModel);
                 return profileViewModel;
