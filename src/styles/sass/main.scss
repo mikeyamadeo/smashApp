@@ -35,7 +35,12 @@
  */
 
 
-
+/*TODO
+ - figure buggy scroll rendering out:
+       http://cantina.co/thought_leadership/ios-5-native-scrolling-grins-and-gothcas/
+ - add selection ui to user characters -> add radio buttons
+ - style stocks
+*/
 
 
 /**
@@ -82,6 +87,15 @@
 @import "bower_components/inuit-images/base.images";
 @import "bower_components/inuit-headings/base.headings";
 @import "base.type";
+a { text-decoration: none; }
+img {
+    -webkit-transition:  2s ease-in all;
+            transition:  2s ease-in all;
+
+}
+* {
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
 
 
 
@@ -97,9 +111,13 @@ $inuit-enable-box--tiny:    true;
 /**
  * Quick, inline extensions of the inuitcss box object.
  */
-.box--sized--small {
+.box--sized--tiny {
     width:  50px;
     height: 50px;
+}
+.box--sized--small {
+    width:  75px;
+    height: 75px;
 }
 .box--sized {
     width:  100px;
@@ -131,9 +149,27 @@ $inuit-enable-layout--auto:     true;
     max-width: 400px;
     margin: 0 auto;
     padding-top: 20px;
+    -webkit-overflow-scrolling: touch;
+
 }
-
-
+.page-head {
+    padding: 10px 0;
+    background-color: $color-blue;
+    color: white;
+}
+.reel {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    max-width: 400px;
+    white-space: nowrap;
+    padding: 10px 0;
+}
+.reel > * {
+    display: inline-block;
+}
+.bg-orange {
+    background-color: $color-orange !important;
+}
 /**
  * #COMPONENTS - Discrete, complete chunks of UI (e.g. .carousel {}).
  */
@@ -150,6 +186,28 @@ $flip-on-hover: false;
  */
 @import "bower_components/inuit-clearfix/trumps.clearfix";
 @import "bower_components/inuit-widths/trumps.widths";
+$inuit-enable-margins:                  true;
+$inuit-enable-margins--tiny:            true;
+$inuit-enable-margins--small:           true;
+$inuit-enable-margins--large:           true;
+$inuit-enable-margins--huge:            true;
+
+$inuit-enable-margins--negative:        true;
+$inuit-enable-margins--negative-tiny:   true;
+$inuit-enable-margins--negative-small:  true;
+$inuit-enable-margins--negative-large:  true;
+$inuit-enable-margins--negative-huge:   true;
+
+$inuit-enable-margins--none:            true;
+
+$inuit-enable-paddings:                 true;
+$inuit-enable-paddings--tiny:           true;
+$inuit-enable-paddings--small:          true;
+$inuit-enable-paddings--large:          true;
+$inuit-enable-paddings--huge:           true;
+
+$inuit-enable-paddings--none:           true;
+@import "bower_components/inuit-spacing/trumps.spacing";
 @import "trumps.centering";
 
 
