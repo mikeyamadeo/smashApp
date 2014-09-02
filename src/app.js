@@ -1055,6 +1055,70 @@ if (typeof define !== 'undefined' && define.amd) {
 	window.FastClick = FastClick;
 }
 
+angular.module("imageLazyLoader", [])
+.directive(
+    "lazyLoadBgSrc", 
+    [        '$location', "$timeout", 
+    function( $location,   $timeout) {
+        return {
+            restrict: 'A',
+            link: function(scope, element, attrs){
+
+                //watch for when image is finished loading
+                //make it bg image of the element
+
+                attrs.$observe(
+                        "fancyImageLoad",
+                        function( newSource ) {
+                            var image = new Image();
+                            image.onload = function () {
+                                var bg = "url(" + newSource + ")";
+
+                                element.css("background-image", bg );
+                                
+                            }
+
+                            image.src = newSource;
+
+
+ 
+                        }
+                    );
+                
+            }
+        };
+}])
+.directive(
+    "lazyLoadSrc", 
+    [        '$location', "$timeout", 
+    function( $location,   $timeout) {
+        return {
+            restrict: 'A',
+            link: function(scope, element, attrs){
+
+                //watch for when image is finished loading
+                //make it bg image of the element
+
+                attrs.$observe(
+                        "lazyLoadSrc",
+                        function( newSource ) {
+                            var image = new Image();
+                            image.onload = function () {
+
+                                element[ 0 ].src = newSource;
+                                
+                            }
+
+                            image.src = newSource;
+
+
+ 
+                        }
+                    );
+                
+            }
+        };
+}])
 'use strict';
 
 angular.module('smash.model', [])
@@ -1213,12 +1277,7 @@ angular.module('smash.viewPrep', [])
 
          return {
                 user    : {},
-                record  : {
-                    total : { 
-                        wins: null, 
-                        losses: null
-                    }
-                },
+                record  : [0, 0],
                 chars   : [],
                 matches : []
             }
@@ -1349,6 +1408,10 @@ angular.module('smash.viewPrep', [])
         function isWinner( match, id ) {
             return match.winner === id;
         }
+
+        function calcRecord( el ) {
+            combineRecords.call( this, el.record );
+        }
         return {
             get : function( user, matches ) {
                 var profileViewModel = new ProfileViewModel();
@@ -1358,10 +1421,15 @@ angular.module('smash.viewPrep', [])
                 var charSet = makeCharSet( matches, user.phoneNumber );
 
                 for ( key in charSet ) {
-                    profileViewModel.chars.push(smashData.char(  key  ));
+                    //get raw char data
+                    var char = smashData.char( key );
+                    //assign record property from char set
+                    char.record = charSet[ key ];
+
+                    profileViewModel.chars.push( char );
                 }
 
-
+                profileViewModel.chars.forEach( calcRecord, profileViewModel.record);
                 profileViewModel.matches = makeUserMatchesModel( matches, user.phoneNumber );
                 // console.log(profileViewModel);
                 return profileViewModel;
@@ -1489,7 +1557,16 @@ angular.module('smash.profile', [])
     function (   $scope,   profileViewModel,   config ) {
         console.log(profileViewModel)
         $scope.viewModel = profileViewModel;
+        $scope.record = $scope.viewModel.record;
         $scope.imgPath = config.imagePath;
+
+        $scope.setRecord = function setRecord( rec ){
+            $scope.record = rec;
+        }
+
+        $scope.numOfStocks = function( size ) {
+            return new Array( size );
+        }
     }]);
 'use strict';
 
@@ -1528,7 +1605,8 @@ angular
     'smash.model',
     'smash.viewPrep',
     'smash.rankings',
-    'smash.profile'
+    'smash.profile',
+    'imageLazyLoader'
   ])
 
   .run(function() {
