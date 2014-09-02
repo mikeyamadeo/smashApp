@@ -220,7 +220,16 @@ $inuit-enable-paddings--none:           true;
 .rounded {
     border-radius: 50%;
 }
+.dot {
+// position: absolute;
+// right: 0;
+    width: 15px;
+    height: 15px;
+    background-color: white;
+    border-radius: 50%;
+    display: block;
 
+}
 
 
 

@@ -2098,3 +2098,12 @@ img.c-h {
 .rounded {
   border-radius: 50%;
 }
+
+/* line 223, ../sass/main.scss */
+.dot {
+  width: 15px;
+  height: 15px;
+  background-color: white;
+  border-radius: 50%;
+  display: block;
+}
