@@ -1,0 +1,46 @@
+<section class="layout--middle layout--flush page-head"><!-- 
+
+
+    User Profile Image 
+    --><div class="layout__item 1/2"
+         ng-click="setRecord( viewModel.record )">
+
+        <img class="rounded box--sized--huge c-h"
+             lazy-load-src="{{ viewModel.user.pictureUrl }}"
+             ng-src="assets/images/placeholder.png" />
+
+    </div><!-- This comment is to remove space between layout__item
+        
+
+
+
+    Win | Loss record
+ --><div class="layout__item 1/2 layout">
+
+
+        <div class="layout__item 1/2 align-center">
+
+            <span class="text-size*2.5">
+                {{ record[ 0 ] }}
+            </span> 
+            <span class="text-size*1.5">
+                wins
+            </span>
+        </div><!-- This comment is to remove space between layout__item
+
+
+     --><div class="layout__item 1/2 align-center">
+
+            <span class="text-size*2.5">
+                {{ record[ 1 ] }}
+            </span> 
+            <span class="text-size*1.5">
+                losses
+            </span>
+        </div>
+
+
+    </div>
+
+
+</section> 
