@@ -1,8 +1,10 @@
-<section class="layout--middle">
+<section class="layout--middle layout--flush page-head">
 
-    <div class="layout__item 1/2">
+    <div class="layout__item 1/2"
+         ng-click="setRecord( viewModel.record )">
         <img class="rounded box--sized--huge c-h"
-             ng-src="{{ viewModel.user.pictureUrl }}" />
+             lazy-load-src="{{ viewModel.user.pictureUrl }}"
+             ng-src="assets/images/placeholder.png" />
     </div><!--
         Remove space between layout__item
     --><div class="layout__item 1/2 layout">
@@ -10,7 +12,7 @@
         <div class="layout__item 1/2 align-center">
 
             <span class="text-size*2.5">
-                {{ viewModel.record[ selectedRecord ][ 0 ] }}
+                {{ record[ 0 ] }}
             </span> 
             <span class="text-size*1.5">
                 wins
@@ -20,7 +22,7 @@
         --><div class="layout__item 1/2 align-center">
 
             <span class="text-size*2.5">
-                {{ viewModel.record[ selectedRecord ][ 1 ] }}
+                {{ record[ 1 ] }}
             </span> 
             <span class="text-size*1.5">
                 losses
@@ -35,11 +37,13 @@
 
 
 <!-- user character reel -->
-<section class="layout">
-    <div class="layout__item 1/4"
-         ng-repeat="char in viewModel.chars">
+<section class="reel">
+    <div class="1/3"
+         ng-repeat="char in viewModel.chars"
+         ng-click="setRecord( char.record )">
 
-        <img ng-src="{{ imgPath + char.imgPath }}">
+        <img lazy-load-src="{{ imgPath + char.imgPath }}"
+             ng-src="assets/images/placeholder.png">
     </div>
 </section>
 
@@ -48,24 +52,33 @@
 
 <!-- user matches -->
 <section>
-    <ol>
-        <li class="layout--flush layout--middle"
+    <ol class="list">
+        <li class="layout--flush layout--middle list__item pt- pb-"
+            ng-class="{ 'list__item--highlight' : !match.win }"
             ng-repeat="match in viewModel.matches">
 
             <div class="layout__item 1/3">
-                <img class="rounded"
-                     ng-src="{{ imgPath + match.char.imgPath }}" />
+                <img class="rounded box--sized ml"
+                     lazy-load-src="{{ imgPath + match.char.imgPath }}"
+                     ng-src="assets/images/placeholder.png" />
+                <!-- track by $index is to avoid Angulars "Duplicate Key in Repeater" error-->
+                <i class=""
+                    ng-repeat="stock in numOfStocks(match.stocksLeft) track by $index">
+                    <!-- {{ match.stocksLeft }} -->
+                </i>
             </div><!--
 
-            --><div class="layout__item 1/3">
-                <img class="rounded"
-                     ng-src="{{ imgPath + match.opponentChar.imgPath }}" />
-            </div><!--
+            --><div class="layout__item 2/3 layout--flush layout--middle align-center">
 
-            --><div class="layout__item 1/3">
-                <a ng-href="/#/profile/{{ match.opponent.phoneNumber }}">
-                <img class="rounded"
-                     ng-src="{{ match.opponent.pictureUrl  }}" />
+                <img class="rounded  box--sized -mr-"
+                     lazy-load-src="{{ imgPath + match.opponentChar.imgPath }}"
+                     ng-src="assets/images/placeholder.png" /><!--
+
+                --><a class=""
+                    ng-href="/#/profile/{{ match.opponent.phoneNumber }}">
+                    <img class="rounded box--sized"
+                         lazy-load-src="{{ match.opponent.pictureUrl  }}"
+                         ng-src="assets/images/placeholder.png" />
                 </a>
             </div>
         </li>
