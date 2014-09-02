@@ -7,7 +7,8 @@ angular
     'smash.model',
     'smash.viewPrep',
     'smash.rankings',
-    'smash.profile'
+    'smash.profile',
+    'imageLazyLoader'
   ])
 
   .run(function() {
