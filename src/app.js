@@ -1555,14 +1555,10 @@ angular.module('smash.profile', [])
   .controller('profileCtrl',
     [           '$scope', 'profileViewModel', 'config',
     function (   $scope,   profileViewModel,   config ) {
-        console.log(profileViewModel)
-        $scope.viewModel = profileViewModel;
-        $scope.record = $scope.viewModel.record;
-        $scope.imgPath = config.imagePath;
 
-        $scope.setRecord = function setRecord( rec ){
-            $scope.record = rec;
-        }
+        $scope.viewModel                = profileViewModel;
+        $scope.viewModel.selectedRecord = $scope.viewModel.record;
+        $scope.imgPath                  = config.imagePath;
 
         /**
          * @desc ng-repeat requires a collection to work, but viewModel.stocksLeft
@@ -1573,6 +1569,7 @@ angular.module('smash.profile', [])
             return new Array( size );
         }
     }]);
+
 'use strict';
 
 angular.module('smash.rankings', [])
