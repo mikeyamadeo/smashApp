@@ -36,10 +36,10 @@
 
 
 /*TODO
- - figure buggy scroll rendering out:
+[ ] figure buggy scroll rendering out:
        http://cantina.co/thought_leadership/ios-5-native-scrolling-grins-and-gothcas/
- - add selection ui to user characters -> add radio buttons
- - style stocks
+[X] add selection ui to user characters -> add radio buttons
+[X] style stocks 
 */
 
 
@@ -88,13 +88,8 @@
 @import "bower_components/inuit-headings/base.headings";
 @import "base.type";
 a { text-decoration: none; }
-img {
-    -webkit-transition:  2s ease-in all;
-            transition:  2s ease-in all;
-
-}
-* {
-    -webkit-tap-highlight-color:rgba(0,0,0,0);
+input[ type="radio" ] {
+    display: none;
 }
 
 
@@ -148,13 +143,12 @@ $inuit-enable-layout--auto:     true;
 .app-container {
     max-width: 400px;
     margin: 0 auto;
-    padding-top: 20px;
     -webkit-overflow-scrolling: touch;
 
 }
 .page-head {
     padding: 10px 0;
-    background-color: $color-blue;
+    background-color: $color-main-dark;
     color: white;
 }
 .reel {
@@ -162,14 +156,26 @@ $inuit-enable-layout--auto:     true;
     overflow-y: hidden;
     max-width: 400px;
     white-space: nowrap;
-    padding: 10px 0;
 }
-.reel > * {
+.reel__item {
     display: inline-block;
+    padding: 10px 0;
+
 }
-.bg-orange {
-    background-color: $color-orange !important;
+.reel__item > input[type="radio"]:checked ~ * {
+    -webkit-transform: scale(1.05);
+            transform: scale(1.05);
+    -webkit-transition: all .15s ease-in;
+            transition: all .15s ease-in;
 }
+.reel__item:nth-child(odd) {
+    background-color: red;
+}
+
+
+
+
+
 /**
  * #COMPONENTS - Discrete, complete chunks of UI (e.g. .carousel {}).
  */
@@ -221,14 +227,18 @@ $inuit-enable-paddings--none:           true;
     border-radius: 50%;
 }
 .dot {
-// position: absolute;
-// right: 0;
     width: 15px;
     height: 15px;
     background-color: white;
     border-radius: 50%;
     display: block;
 
+}
+.grow {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+    -webkit-transition: all .25s ease-in;
+            transition: all .25s ease-in;
 }
 
 

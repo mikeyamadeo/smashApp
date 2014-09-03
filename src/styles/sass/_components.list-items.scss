@@ -9,22 +9,22 @@
 .list {
     @include background-image-cover;
     list-style: none;
-    max-height: 400px;
-    overflow: scroll;
+    // max-height: 400px;
+    // overflow: scroll;
 }
 //.list ups the specifity to override
 .list--rank .list__item--rank:nth-child(1) {
     padding: 30px 0;
-    border-bottom: solid 6px $color-blue-light;
+    border-bottom: solid 6px $color-main-light;
     // background-color: rgba( white, .7);
-    background-color: $color-blue;
+    background-color: $color-main;
 
 }
 .list__item--rank:nth-child(odd) {
-    background-color: $color-blue-light;
+    background-color: $color-main-light;
 }
 .list__item--rank:nth-child(even) {
-    background-color: $color-blue-dark;
+    background-color: $color-main-dark;
 }
 .list__token {
     color: white;
@@ -37,10 +37,10 @@
 //     border-bottom: solid 3px white;
 // }
 .list__item {
-    background-color: $color-blue;
+    background-color: $color-main;
     border-bottom: solid 1px white;
 }
 
 .list__item--highlight {
-    background-color: $color-orange;
+    background-color: $color-compliment;
 }

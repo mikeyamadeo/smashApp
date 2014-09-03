@@ -34,10 +34,10 @@
  *
  */
 /*TODO
- - figure buggy scroll rendering out:
+[ ] figure buggy scroll rendering out:
        http://cantina.co/thought_leadership/ios-5-native-scrolling-grins-and-gothcas/
- - add selection ui to user characters -> add radio buttons
- - style stocks
+[X] add selection ui to user characters -> add radio buttons
+[X] style stocks 
 */
 /**
  * #SETTINGS - Global variables, site-wide settings, config switches, etc.
@@ -730,14 +730,8 @@ a {
 }
 
 /* line 91, ../sass/main.scss */
-img {
-  -webkit-transition: 2s ease-in all;
-  transition: 2s ease-in all;
-}
-
-/* line 96, ../sass/main.scss */
-* {
-  -webkit-tap-highlight-color: transparent;
+input[type="radio"] {
+  display: none;
 }
 
 /**
@@ -782,31 +776,31 @@ img {
 /**
  * Quick, inline extensions of the inuitcss box object.
  */
-/* line 114, ../sass/main.scss */
+/* line 109, ../sass/main.scss */
 .box--sized--tiny {
   width: 50px;
   height: 50px;
 }
 
-/* line 118, ../sass/main.scss */
+/* line 113, ../sass/main.scss */
 .box--sized--small {
   width: 75px;
   height: 75px;
 }
 
-/* line 122, ../sass/main.scss */
+/* line 117, ../sass/main.scss */
 .box--sized {
   width: 100px;
   height: 100px;
 }
 
-/* line 126, ../sass/main.scss */
+/* line 121, ../sass/main.scss */
 .box--sized--large {
   width: 125px;
   height: 125px;
 }
 
-/* line 130, ../sass/main.scss */
+/* line 125, ../sass/main.scss */
 .box--sized--huge {
   width: 150px;
   height: 150px;
@@ -930,38 +924,45 @@ img {
   width: auto;
 }
 
-/* line 148, ../sass/main.scss */
+/* line 143, ../sass/main.scss */
 .app-container {
   max-width: 400px;
   margin: 0 auto;
-  padding-top: 20px;
   -webkit-overflow-scrolling: touch;
 }
 
-/* line 155, ../sass/main.scss */
+/* line 149, ../sass/main.scss */
 .page-head {
   padding: 10px 0;
-  background-color: #15b1ff;
+  background-color: #0077b2;
   color: white;
 }
 
-/* line 160, ../sass/main.scss */
+/* line 154, ../sass/main.scss */
 .reel {
   overflow-x: scroll;
   overflow-y: hidden;
   max-width: 400px;
   white-space: nowrap;
+}
+
+/* line 160, ../sass/main.scss */
+.reel__item {
+  display: inline-block;
   padding: 10px 0;
 }
 
-/* line 167, ../sass/main.scss */
-.reel > * {
-  display: inline-block;
+/* line 165, ../sass/main.scss */
+.reel__item > input[type="radio"]:checked ~ * {
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+  -webkit-transition: all .15s ease-in;
+  transition: all .15s ease-in;
 }
 
-/* line 170, ../sass/main.scss */
-.bg-orange {
-  background-color: #ff9c22 !important;
+/* line 171, ../sass/main.scss */
+.reel__item:nth-child(odd) {
+  background-color: red;
 }
 
 /**
@@ -1069,8 +1070,6 @@ img {
   -o-background-size: cover;
   background-size: cover;
   list-style: none;
-  max-height: 400px;
-  overflow: scroll;
 }
 
 /* line 16, ../sass/_components.list-items.scss */
@@ -2089,21 +2088,29 @@ img.c-h {
   right: 0;
 }
 
-/* line 217, ../sass/main.scss */
+/* line 223, ../sass/main.scss */
 .align-center {
   text-align: center;
 }
 
-/* line 220, ../sass/main.scss */
+/* line 226, ../sass/main.scss */
 .rounded {
   border-radius: 50%;
 }
 
-/* line 223, ../sass/main.scss */
+/* line 229, ../sass/main.scss */
 .dot {
   width: 15px;
   height: 15px;
   background-color: white;
   border-radius: 50%;
   display: block;
+}
+
+/* line 237, ../sass/main.scss */
+.grow {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  -webkit-transition: all .25s ease-in;
+  transition: all .25s ease-in;
 }
