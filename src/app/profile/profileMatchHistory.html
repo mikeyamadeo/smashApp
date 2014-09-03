@@ -6,13 +6,17 @@
             ng-repeat="match in viewModel.matches">
 
 
-
-
             <!-- Character used by user in match -->
-            <div class="layout__item 4/12 layout--flush layout--middle align-center">
+            <div class="layout__item 
+                        4/12
+                        layout--flush 
+                        layout--middle
+                        align-center">
+
                 <img class="rounded box--sized"
                      lazy-load-src="{{ imgPath + match.char.imgPath }}"
                      ng-src="assets/images/placeholder.png" />
+
             </div><!-- 
 
 
@@ -30,7 +34,11 @@
 
 
             Opponent Info
-         --><div class="layout__item 7/12 layout--flush layout--middle align-center">
+         --><div class="layout__item
+                        7/12
+                        layout--flush
+                        layout--middle
+                        align-center">
 
                 <img class="rounded  box--sized -mr"
                      lazy-load-src="{{ imgPath + match.opponentChar.imgPath }}"
@@ -43,6 +51,8 @@
                          ng-src="assets/images/placeholder.png" />
                 </a>
             </div>
+
+
         </li>
     </ol>
 </section>
