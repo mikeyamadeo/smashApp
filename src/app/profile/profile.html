@@ -7,13 +7,14 @@
 
 <!-- User Character Reel -->
 <section class="reel">
-    <div class="1/3"
-         ng-repeat="char in viewModel.chars"
-         ng-click="setRecord( char.record )">
+    <label class="1/3 reel__item"
+         ng-repeat="char in viewModel.chars">
 
+        <input type="radio" name="record" ng-model="viewModel.selectedRecord" ng-value=" char.record " />
         <img lazy-load-src="{{ imgPath + char.imgPath }}"
              ng-src="assets/images/placeholder.png">
-    </div>
+
+    </label>
 </section>
 
 
